@@ -19,6 +19,7 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
     private final LinkedList<String> mWordList = new LinkedList<>();
+    private final LinkedList<String> mWordListsaved = new LinkedList<>();
     private RecyclerView mRecyclerView;
     private WordListAdapter mAdapter;
 
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < 20; i++) {
             mWordList.addLast("Word " + i);
         }
+        mWordListsaved.addAll(mWordList);
         mRecyclerView = findViewById(R.id.recyclerview);
 // Create an adapter and supply the data to be displayed.
         mAdapter = new WordListAdapter(this, mWordList);
@@ -70,7 +72,10 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_reset) {
+            mWordList.clear();
+            mWordList.addAll(mWordListsaved);
+            mRecyclerView.getAdapter().notifyDataSetChanged();
             return true;
         }
 

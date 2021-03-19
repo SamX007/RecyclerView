@@ -1,2 +1,2 @@
-## Recycler view with interactive list
-![](app/src/main/res/drawable/task.gif)
+## Coding Challenge
+![](app/src/main/res/drawable/coding_challenge.gif)
